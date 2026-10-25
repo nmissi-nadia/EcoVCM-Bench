@@ -1,0 +1,44 @@
+# Configuration des expériences EcoVCM-Bench
+
+experiment:
+  name: "baseline_evaluation"
+  seed: 42
+  output_dir: "results/"
+  save_raw_metrics: true
+
+dataset:
+  name: "custom_video_dataset"
+  root_path: "data/"
+  sequences:
+    - name: "sequence_01"
+      fps: 30
+      resolution: [1920, 1080]
+      num_frames: 300
+
+codecs:
+  traditional:
+    - name: "h264"
+      tool: "ffmpeg"
+      preset: "medium"
+      qp_values: [22, 27, 32, 37]
+    - name: "hevc"
+      tool: "ffmpeg"
+      preset: "medium"
+      qp_values: [22, 27, 32, 37]
+  vcm:
+    - name: "feature_compression_v1"
+      quantization_steps: [1, 2, 4, 8]
+
+downstream_task:
+  task_type: "object_detection"
+  model: "yolov8m"
+  weights: "pretrained"
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+
+energy_profiling:
+  enabled: true
+  tracker: "codecarbon"  # ou 'pyjoules', 'nvml'
+  gpu_device_id: 0
+  measure_frequency_sec: 0.5
+  repeat_runs: 3

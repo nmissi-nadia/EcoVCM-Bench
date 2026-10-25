@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Large datasets and media files
+data/raw_videos/*
+!data/raw_videos/.gitkeep
+data/features/*
+!data/features/.gitkeep
+
+# Model weights
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# Environment and sensitive files
+.env
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
